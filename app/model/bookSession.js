@@ -6,7 +6,8 @@ const bookSessionSchema = new mongoose.Schema({
   grade: { type: String, required: true },
   day: { type: String, required: true },
   time: { type: String, required: true },
-}, { timestamps: true });
+}, 
+{ timestamps: true });
 
 const BookSession = mongoose.models.BookSession || mongoose.model("BookSession", bookSessionSchema);
 

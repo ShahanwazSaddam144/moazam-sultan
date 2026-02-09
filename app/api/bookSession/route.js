@@ -37,3 +37,22 @@ export async function POST(req) {
     );
   }
 }
+
+export async function GET() {
+  try {
+    await connectToDatabase();
+
+    const sessions = await BookSession.find().sort({ createdAt: -1 });
+    
+    return new Response(
+      JSON.stringify({ success: true, sessions }),
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("GET /bookSession error:", error);
+    return new Response(
+      JSON.stringify({ success: false, message: "Server error" }),
+      { status: 500 }
+    );
+  }
+}

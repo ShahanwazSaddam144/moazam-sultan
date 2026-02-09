@@ -17,7 +17,6 @@ async function connectToDatabase() {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    // ⚡ Mongoose v7 automatically uses the correct parser and topology
     cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => mongoose);
   }
 

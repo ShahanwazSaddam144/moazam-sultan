@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, Calculator, BookOpen, User, Mail } from "lucide-react";
+import { Menu, X, Calculator, BookOpen, User, Mail, Layout } from "lucide-react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -38,6 +38,7 @@ const Navbar = () => {
             <NavItem href="/resources" icon={<BookOpen size={18} />} label="Resources" />
             <NavItem href="/about" icon={<User size={18} />} label="About" />
             <NavItem href="/contact" icon={<Mail size={18} />} label="Contact" />
+            <NavItem href="/dashboard" icon={<Layout size={18} />} label="Dashboard" />
           </div>
 
           {/* Mobile Toggle */}
