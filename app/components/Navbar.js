@@ -63,6 +63,7 @@ const Navbar = () => {
           <div className="lg:hidden mt-3 rounded-2xl bg-gradient-to-r from-amber-300 to-orange-100 p-5 space-y-4 shadow-xl">
             <MobileNavItem href="#hero" icon={<Home size={18} />} label="Hero" />
             <MobileNavItem href="#testimonials" icon={<BookOpen size={18} />} label="Testimonials" />
+            <MobileNavItem href="#services" icon={<Calculator size={18} />} label="Services" />
             <MobileNavItem href="#portfolio" icon={<User2 size={18} />} label="Portfolio" />
             <MobileNavItem href="#contact" icon={<Mail size={18} />} label="Contact" />
             <Link
