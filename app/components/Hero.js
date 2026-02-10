@@ -5,7 +5,8 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen pt-24 bg-gradient-to-b from-amber-50 to-orange-100">
+    <section className="min-h-screen pt-24 bg-gradient-to-b from-amber-50 to-orange-100"
+    id="hero">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mt-10 sm:mt-30 flex flex-col-reverse md:flex-row items-center justify-between gap-14">
 

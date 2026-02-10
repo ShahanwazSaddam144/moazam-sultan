@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, Calculator, BookOpen, MessageSquareQuote, Mail, User2 } from "lucide-react";
+import { Menu, X, Calculator, BookOpen, MessageSquareQuote, Mail, User2, Home } from "lucide-react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -33,16 +33,17 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8 text-white">
+          <div className="hidden lg:flex items-center gap-8 text-white">
+            <NavItem href="#hero" icon={<Home size={18} />} label="Hero" />
             <NavItem href="#services" icon={<Calculator size={18} />} label="Services" />
             <NavItem href="#Testimonials" icon={<MessageSquareQuote size={18} />} label="Testimonials" />
             <NavItem href="#portfolio" icon={<User2 size={18} />} label="Portfolio" />
-            <NavItem href="/contact" icon={<Mail size={18} />} label="Contact" />
+            <NavItem href="#contact" icon={<Mail size={18} />} label="Contact" />
           </div>
 
               <Link
               href="#bookSession"
-              className="hidden md:flex ml-4 rounded-lg bg-white text-amber-600 font-semibold px-4 py-2 shadow hover:bg-amber-50 transition"
+              className="hidden lg:flex ml-4 rounded-lg bg-white text-amber-600 font-semibold px-4 py-2 shadow hover:bg-amber-50 transition"
             >
               Book a Session
             </Link>
@@ -50,7 +51,7 @@ const Navbar = () => {
           {/* Mobile Toggle */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden text-white"
+            className="lg:hidden text-white"
             aria-label="Toggle Menu"
           >
             {open ? <X size={30} /> : <Menu size={30} />}
@@ -59,8 +60,8 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {open && (
-          <div className="md:hidden mt-3 rounded-2xl bg-gradient-to-r from-amber-300 to-orange-100 p-5 space-y-4 shadow-xl">
-            <MobileNavItem href="#services" icon={<Calculator size={18} />} label="Services" />
+          <div className="lg:hidden mt-3 rounded-2xl bg-gradient-to-r from-amber-300 to-orange-100 p-5 space-y-4 shadow-xl">
+            <MobileNavItem href="#hero" icon={<Home size={18} />} label="Hero" />
             <MobileNavItem href="#testimonials" icon={<BookOpen size={18} />} label="Testimonials" />
             <MobileNavItem href="#portfolio" icon={<User2 size={18} />} label="Portfolio" />
             <MobileNavItem href="#contact" icon={<Mail size={18} />} label="Contact" />

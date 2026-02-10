@@ -2,7 +2,8 @@
 
 import React from "react";
 import Navbar from "./Navbar";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, User2, CheckCircle, Award } from "lucide-react";
+import { motion } from "framer-motion";
 
 const testimonialsData = [
   {
@@ -20,11 +21,53 @@ const testimonialsData = [
     rating: 5,
   },
   {
-    name: "Ali Raza",
+    name: "Shahnawaz Saddam Butt",
     class: "Class 10",
     review:
       "Highly recommended for board exams. Practice sessions helped me score better marks.",
     rating: 4,
+  },
+];
+
+// Helper to get initials from full name
+const getInitials = (name) => {
+  return name
+    .split(" ")
+    .map((n) => n[0].toUpperCase())
+    .slice(0, 3)
+    .join("");
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.6, ease: "easeOut" } 
+  },
+};
+
+const metricsData = [
+  {
+    title: "Students Taught",
+    value: "500+",
+    icon: <User2 size={24} />,
+    bg: "bg-orange-50",
+    iconBg: "bg-orange-600 text-white",
+  },
+  {
+    title: "Success Rate",
+    value: "98%",
+    icon: <CheckCircle size={24} />,
+    bg: "bg-orange-50",
+    iconBg: "bg-orange-600 text-white",
+  },
+  {
+    title: "O/A Level Results",
+    value: "A* Grades",
+    icon: <Award size={24} />,
+    bg: "bg-orange-50",
+    iconBg: "bg-orange-600 text-white",
   },
 ];
 
@@ -33,10 +76,7 @@ const Testimonials = () => {
     <>
       <Navbar />
 
-      <section
-        id="Testimonials"
-        className="bg-orange-50/40 py-24"
-      >
+      <section id="Testimonials" className="bg-orange-50/40 py-24">
         <div className="max-w-7xl mx-auto px-6">
 
           {/* HEADER */}
@@ -52,8 +92,12 @@ const Testimonials = () => {
           {/* TESTIMONIAL CARDS */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonialsData.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
                 className="
                   relative bg-white rounded-2xl p-8
                   shadow-lg hover:shadow-xl
@@ -83,19 +127,40 @@ const Testimonials = () => {
                 </p>
 
                 {/* Student Info */}
-                <div className="border-t pt-4">
-                  <p className="font-semibold text-gray-800">
-                    {item.name}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    {item.class}
-                  </p>
+                <div className="border-t pt-4 flex items-center gap-3">
+                  {/* Avatar with initials */}
+                  <div className="flex items-center justify-center w-10 h-10 bg-orange-600 text-white font-bold rounded-full text-sm">
+                    {getInitials(item.name)}
+                  </div>
+
+                  <div>
+                    <p className="font-semibold text-gray-800">{item.name}</p>
+                    <p className="text-sm text-gray-500">{item.class}</p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-
         </div>
+
+            {/* METRICS */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
+            {metricsData.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className={`flex flex-col items-center justify-center ${item.bg} rounded-2xl p-6 shadow hover:shadow-lg transition cursor-pointer border-2 border-gray-300 hover:border-orange-300`}
+              >
+                <span className={`p-3 rounded-full mb-3 flex items-center justify-center ${item.iconBg}`}>
+                  {item.icon}
+                </span>
+                <h3 className="text-2xl font-bold text-gray-900">{item.value}</h3>
+                <p className="text-gray-600 text-sm text-center">{item.title}</p>
+              </motion.div>
+            ))}
+          </div>
       </section>
     </>
   );

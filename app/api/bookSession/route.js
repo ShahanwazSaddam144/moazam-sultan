@@ -41,3 +41,28 @@ export async function GET() {
     return NextResponse.json({ success: false, message: "Server error" }, { status: 500 });
   }
 }
+
+export async function DELETE(req) {
+  try {
+    await connectToDatabase();
+
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json({ success: false, message: "Session ID is required" }, { status: 400 });
+    }
+
+    const deleted = await BookSession.findByIdAndDelete(id);
+
+    if (!deleted) {
+      return NextResponse.json({ success: false, message: "Session not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ success: true, message: "Session deleted successfully" }, { status: 200 });
+
+  } catch (error) {
+    console.error("DELETE /bookSession error:", error.stack || error);
+    return NextResponse.json({ success: false, message: "Server error" }, { status: 500 });
+  }
+}
