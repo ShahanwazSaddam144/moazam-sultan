@@ -14,12 +14,18 @@ const BookSession = () => {
   const [selected, setSelected] = useState(null);
   const [form, setForm] = useState({ name: "", email: "", grade: "" });
   const [popup, setPopup] = useState({ show: false, message: "" });
+  const [loading, setLoading] = useState(false); // new state
 
   const handleBooking = async () => {
     if (!form.name || !form.email || !form.grade || !selected) {
-      setPopup({ show: true, message: "Please fill all fields and select a session time." });
+      setPopup({
+        show: true,
+        message: "Please fill all fields and select a session time.",
+      });
       return;
     }
+
+    setLoading(true); // disable button
 
     try {
       const res = await fetch("/api/bookSession", {
@@ -45,7 +51,12 @@ const BookSession = () => {
       }
     } catch (err) {
       console.error(err);
-      setPopup({ show: true, message: "⚠️ Server error. Please try again later." });
+      setPopup({
+        show: true,
+        message: "⚠️ Server error. Please try again later.",
+      });
+    } finally {
+      setLoading(false); // re-enable button after request completes
     }
   };
 
@@ -71,15 +82,21 @@ const BookSession = () => {
               </div>
               <div className="space-y-4">
                 {availability.map((item, index) => (
-                  <div key={index} className="rounded-xl border border-amber-100 p-4">
+                  <div
+                    key={index}
+                    className="rounded-xl border border-amber-100 p-4"
+                  >
                     <p className="font-semibold text-gray-800">{item.day}</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {item.slots.map((slot, i) => (
                         <button
                           key={i}
-                          onClick={() => setSelected({ day: item.day, time: slot })}
+                          onClick={() =>
+                            setSelected({ day: item.day, time: slot })
+                          }
                           className={`rounded-lg px-3 py-1 text-sm border transition ${
-                            selected?.day === item.day && selected?.time === slot
+                            selected?.day === item.day &&
+                            selected?.time === slot
                               ? "bg-amber-600 text-white border-amber-600"
                               : "border-amber-300 text-amber-700 hover:bg-amber-100"
                           }`}
@@ -125,8 +142,12 @@ const BookSession = () => {
                 <div className="rounded-xl bg-amber-50 p-4 text-sm text-gray-700">
                   {selected ? (
                     <>
-                      <p><strong>Day:</strong> {selected.day}</p>
-                      <p><strong>Time:</strong> {selected.time}</p>
+                      <p>
+                        <strong>Day:</strong> {selected.day}
+                      </p>
+                      <p>
+                        <strong>Time:</strong> {selected.time}
+                      </p>
                     </>
                   ) : (
                     <p>Please select a day and time.</p>
@@ -135,9 +156,15 @@ const BookSession = () => {
 
                 <button
                   onClick={handleBooking}
-                  className="w-full rounded-xl bg-amber-600 px-6 py-3 font-semibold text-white hover:bg-amber-700 transition"
+                  disabled={loading}
+                  className={`w-full rounded-xl px-6 py-3 font-semibold text-white transition 
+    ${
+      loading
+        ? "bg-amber-400 cursor-not-allowed pointer-events-none"
+        : "bg-amber-600 hover:bg-amber-700"
+    }`}
                 >
-                  Confirm Booking
+                  {loading ? "Booking..." : "Confirm Booking"}
                 </button>
               </div>
             </div>

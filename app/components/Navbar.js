@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, Calculator, BookOpen, User, Mail, Layout } from "lucide-react";
+import { Menu, X, Calculator, BookOpen, User, Mail } from "lucide-react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -33,13 +33,19 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-10 text-white">
+          <div className="hidden md:flex items-center gap-8 text-white">
             <NavItem href="/services" icon={<Calculator size={18} />} label="Services" />
             <NavItem href="/resources" icon={<BookOpen size={18} />} label="Resources" />
             <NavItem href="/about" icon={<User size={18} />} label="About" />
             <NavItem href="/contact" icon={<Mail size={18} />} label="Contact" />
-            <NavItem href="/dashboard" icon={<Layout size={18} />} label="Dashboard" />
           </div>
+
+              <Link
+              href="/book"
+              className="hidden md:flex ml-4 rounded-lg bg-white text-amber-600 font-semibold px-4 py-2 shadow hover:bg-amber-50 transition"
+            >
+              Book a Session
+            </Link>
 
           {/* Mobile Toggle */}
           <button
@@ -58,6 +64,12 @@ const Navbar = () => {
             <MobileNavItem href="/resources" icon={<BookOpen size={18} />} label="Resources" />
             <MobileNavItem href="/about" icon={<User size={18} />} label="About" />
             <MobileNavItem href="/contact" icon={<Mail size={18} />} label="Contact" />
+            <Link
+              href="/book"
+              className="block mt-2 w-full text-center rounded-lg bg-amber-600 text-white font-semibold px-4 py-2 shadow hover:bg-amber-700 transition"
+            >
+              Book a Session
+            </Link>
           </div>
         )}
       </div>
@@ -66,7 +78,10 @@ const Navbar = () => {
 };
 
 const NavItem = ({ href, icon, label }) => (
-  <Link href={href} className="group relative flex items-center gap-2 cursor-pointer font-medium transition">
+  <Link
+    href={href}
+    className="group relative flex items-center gap-2 cursor-pointer font-medium transition"
+  >
     {icon}
     <span>{label}</span>
     <span className="absolute -bottom-2 left-0 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full" />

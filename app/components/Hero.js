@@ -35,7 +35,7 @@ const Hero = () => {
           <div className="relative flex justify-center md:justify-end w-full md:w-auto">
             <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-amber-400 to-orange-400 blur-xl opacity-40"></div>
             <Image
-              src="/logo.jpg"
+              src="/hero.avif"
               alt="Math Tutor"
               width={280}
               height={280}
