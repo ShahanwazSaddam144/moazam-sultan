@@ -108,8 +108,8 @@ const Portfolio = () => {
             <h2 className="text-sm font-bold text-orange-600 tracking-[0.2em] uppercase mb-4">
               Learning Library
             </h2>
-            <h3 className="text-4xl md:text-5xl font-extrabold text-orange-900 tracking-tight">
-              Interactive <span className="text-blue-600">Tutorials</span>
+            <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+              Interactive <span className="text-orange-600">Tutorials</span>
             </h3>
           </motion.div>
 
