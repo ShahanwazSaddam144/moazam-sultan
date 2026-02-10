@@ -2,6 +2,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Portfolio from "./components/Portfolio";
 import Qualification from "./components/Qualification";
+import Services from "./components/Services";
 import BookSession from "./components/bookSession";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
   <Qualification />
   <BookSession />
   <Portfolio />
+  <Services />
   </>
   );
 }

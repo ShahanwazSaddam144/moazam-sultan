@@ -34,7 +34,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8 text-white">
-            <NavItem href="/services" icon={<Calculator size={18} />} label="Services" />
+            <NavItem href="#services" icon={<Calculator size={18} />} label="Services" />
             <NavItem href="/resources" icon={<BookOpen size={18} />} label="Resources" />
              <NavItem href="#portfolio" icon={<User2 size={18} />} label="Portfolio" />
             <NavItem href="/contact" icon={<Mail size={18} />} label="Contact" />
@@ -60,7 +60,7 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {open && (
           <div className="md:hidden mt-3 rounded-2xl bg-gradient-to-r from-amber-300 to-orange-100 p-5 space-y-4 shadow-xl">
-            <MobileNavItem href="/services" icon={<Calculator size={18} />} label="Services" />
+            <MobileNavItem href="#services" icon={<Calculator size={18} />} label="Services" />
             <MobileNavItem href="/resources" icon={<BookOpen size={18} />} label="Resources" />
             <MobileNavItem href="/about" icon={<User size={18} />} label="About" />
             <MobileNavItem href="/contact" icon={<Mail size={18} />} label="Contact" />
