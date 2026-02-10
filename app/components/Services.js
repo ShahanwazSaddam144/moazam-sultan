@@ -3,18 +3,18 @@
 import React, { useRef, useEffect } from "react";
 import Navbar from "./Navbar";
 import { motion, useInView } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, GraduationCap, Layers } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.25 },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
@@ -25,7 +25,6 @@ const itemVariants = {
 const Services = () => {
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
-
   const isInView = useInView(sectionRef, { amount: 0.4 });
 
   useEffect(() => {
@@ -37,84 +36,139 @@ const Services = () => {
     <>
       <Navbar />
 
-      <section
-        ref={sectionRef}
-        className="max-w-6xl mx-auto px-6 py-20"
-        id="services"
-      >
-        <motion.div
-          className="flex flex-col md:flex-row items-center justify-center gap-14"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* 🎥 Video */}
+      {/* OUTER CONTAINER */}
+      <section ref={sectionRef} id="services" className="bg-orange-50/40 py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* HEADER */}
           <motion.div
-            variants={itemVariants}
-            whileHover={{ scale: 1.02 }}
-            className="w-full md:w-1/2 flex justify-center"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-center mb-16"
           >
-            <div className="relative w-full max-w-xl rounded-2xl p-[2px] bg-gradient-to-br from-orange-500 to-orange-600 shadow-xl">
-              <div className="bg-white rounded-2xl overflow-hidden aspect-video">
-                <video
-                  ref={videoRef}
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  className="w-full h-full object-cover"
-                  src="/video/intro.mp4"
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* 📘 Content */}
-          <motion.div
-            variants={itemVariants}
-            className="w-full md:w-1/2 text-center md:text-left"
-          >
-            <h2 className="text-3xl font-bold text-orange-600 mb-4">
+            <motion.h2
+              variants={itemVariants}
+              className="text-4xl font-bold text-orange-600"
+            >
               Mathematics Teaching Services
-            </h2>
-
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              I provide structured, concept-focused mathematics lessons that
-              help students build clarity, confidence, and long-term academic
-              success.
-            </p>
-
-            <motion.ul
-              className="space-y-4 flex flex-col items-center md:items-start"
-              variants={containerVariants}
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="mt-4 text-gray-600 max-w-2xl mx-auto"
             >
-              {[
-                "Algebra & Equations",
-                "Geometry & Mensuration",
-                "Trigonometry",
-                "Calculus Basics",
-              ].map((service, index) => (
-                <motion.li
-                  key={index}
-                  variants={itemVariants}
-                  className="flex items-center text-lg text-gray-800"
-                >
-                  <span className="text-green-600 mr-3 text-xl"><Check size={20}/></span>
-                  {service}
-                </motion.li>
-              ))}
-            </motion.ul>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-8 px-8 py-3 bg-orange-600 text-white font-semibold rounded-lg shadow-md
-               hover:bg-orange-700 transition cursor-pointer"
-            >
-              Contact for Classes
-            </motion.button>
+              Concept-based, exam-focused mathematics teaching for school
+              students with clear explanations and personal attention.
+            </motion.p>
           </motion.div>
-        </motion.div>
+
+          {/* MAIN CONTENT */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center"
+          >
+            {/* VIDEO CARD */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ scale: 1.02 }}
+              className="flex justify-center"
+            >
+              <div className="w-full max-w-xl rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 p-[2px] shadow-xl">
+                <div className="bg-white rounded-2xl overflow-hidden aspect-video">
+                  <video
+                    ref={videoRef}
+                    muted
+                    loop
+                    playsInline
+                    controls
+                    className="w-full h-full object-cover"
+                    src="/video/intro.mp4"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* INFO CARD */}
+            <motion.div
+              variants={itemVariants}
+              className="bg-white border border-orange-300 rounded-2xl shadow-xl p-8"
+            >
+              <h3 className="text-2xl font-bold text-orange-600 mb-4">
+                What I Teach
+              </h3>
+
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                I help students strengthen their fundamentals, improve problem-
+                solving skills, and perform confidently in exams.
+              </p>
+
+              {/* SUBJECTS */}
+              <ul className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  "Algebra & Linear Equations",
+                  "Geometry & Mensuration",
+                  "Trigonometry (Basics to Advanced)",
+                  "Introduction to Calculus",
+                ].map((item, i) => (
+                  <li
+                    key={i}
+                    className="
+        flex items-center gap-3
+        rounded-xl border border-orange-200
+        bg-orange-50 px-4 py-3
+        text-gray-800 font-medium
+        shadow-sm hover:shadow-md
+        transition
+      "
+                  >
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-600 text-white">
+                      <Check size={18} />
+                    </span>
+                    <span className="leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CLASSES CONTAINER */}
+              <div className="border-t pt-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <GraduationCap className="text-orange-600" />
+                  <h4 className="text-lg font-semibold text-gray-800">
+                    Classes I Teach
+                  </h4>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 text-sm text-gray-700">
+                  {[
+                    "Class 1 – 3",
+                    "Class 4 – 5",
+                    "Class 6 – 8",
+                    "Class 9",
+                    "Class 10 / Dash",
+                  ].map((cls, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center gap-2 bg-orange-50 rounded-lg px-3 py-2"
+                    >
+                      <Layers size={14} className="text-orange-600" />
+                      {cls}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-8 w-full bg-orange-600 text-white font-semibold py-3 rounded-lg shadow hover:bg-orange-700 transition"
+              >
+                Contact for Classes
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        </div>
       </section>
     </>
   );
