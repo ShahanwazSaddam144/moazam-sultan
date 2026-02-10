@@ -145,7 +145,8 @@ const Services = () => {
                     "Class 4 – 5",
                     "Class 6 – 8",
                     "Class 9",
-                    "Class 10 / Dash",
+                    "Class 10",
+                    "O/A Levels "
                   ].map((cls, i) => (
                     <div
                       key={i}

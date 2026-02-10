@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Portfolio from "./components/Portfolio";
 import Qualification from "./components/Qualification";
 import Services from "./components/Services";
+import Testimonials from "./components/Testimonials";
 import BookSession from "./components/bookSession";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
   <BookSession />
   <Portfolio />
   <Services />
+  <Testimonials />
   </>
   );
 }

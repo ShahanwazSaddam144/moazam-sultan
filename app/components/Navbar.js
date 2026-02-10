@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, Calculator, BookOpen, User, Mail, User2 } from "lucide-react";
+import { Menu, X, Calculator, BookOpen, MessageSquareQuote, Mail, User2 } from "lucide-react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -35,8 +35,8 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8 text-white">
             <NavItem href="#services" icon={<Calculator size={18} />} label="Services" />
-            <NavItem href="/resources" icon={<BookOpen size={18} />} label="Resources" />
-             <NavItem href="#portfolio" icon={<User2 size={18} />} label="Portfolio" />
+            <NavItem href="#Testimonials" icon={<MessageSquareQuote size={18} />} label="Testimonials" />
+            <NavItem href="#portfolio" icon={<User2 size={18} />} label="Portfolio" />
             <NavItem href="/contact" icon={<Mail size={18} />} label="Contact" />
           </div>
 
@@ -61,9 +61,9 @@ const Navbar = () => {
         {open && (
           <div className="md:hidden mt-3 rounded-2xl bg-gradient-to-r from-amber-300 to-orange-100 p-5 space-y-4 shadow-xl">
             <MobileNavItem href="#services" icon={<Calculator size={18} />} label="Services" />
-            <MobileNavItem href="/resources" icon={<BookOpen size={18} />} label="Resources" />
-            <MobileNavItem href="/about" icon={<User size={18} />} label="About" />
-            <MobileNavItem href="/contact" icon={<Mail size={18} />} label="Contact" />
+            <MobileNavItem href="#testimonials" icon={<BookOpen size={18} />} label="Testimonials" />
+            <MobileNavItem href="#portfolio" icon={<User2 size={18} />} label="Portfolio" />
+            <MobileNavItem href="#contact" icon={<Mail size={18} />} label="Contact" />
             <Link
               href="#bookSession"
               className="block mt-2 w-full text-center rounded-lg bg-amber-600 text-white font-semibold px-4 py-2 shadow hover:bg-amber-700 transition"
