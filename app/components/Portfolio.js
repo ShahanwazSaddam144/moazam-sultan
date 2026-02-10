@@ -133,7 +133,7 @@ const Portfolio = () => {
               onClick={() => setFilter(type)}
               className={`px-8 py-3 rounded-2xl text-sm font-bold transition-all border whitespace-nowrap ${
                 filter === type
-                  ? "bg-amber-900 text-white border-amber-900 shadow-lg"
+                  ? "bg-amber-600 text-white border-amber-900 shadow-lg"
                   : "bg-amber-50 text-gray-500 border-orange-100 hover:border-orange-200"
               }`}
             >
@@ -189,13 +189,13 @@ const Portfolio = () => {
                 layout
                 href="https://www.youtube.com/@iammoazzamsultan"
                 target="_blank"
-                className="group flex flex-col items-center justify-center p-8 bg-gray-50 border-2 border-dashed border-slate-200 rounded-[2rem] hover:border-blue-300 hover:bg-blue-50/30 transition-all duration-300"
+                className="group flex flex-col items-center justify-center p-8 bg-ornage-50 border-2 border-dashed border-slate-200 rounded-[2rem] hover:border-orange-300 over:bg-orange-50/30 transition-all duration-300"
               >
                 <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-4 group-hover:scale-110 transition-transform">
                   <Youtube className="text-red-600" size={32} />
                 </div>
                 <h4 className="text-xl font-extrabold text-slate-900 mb-2">Explore More</h4>
-                <div className="flex items-center gap-2 text-blue-600 font-bold text-sm">
+                <div className="flex items-center gap-2 text-orange-600 font-bold text-sm">
                   Visit Channel <ArrowRight size={16} />
                 </div>
               </motion.a>
@@ -276,7 +276,7 @@ const Portfolio = () => {
                     <a
                       href={selectedItem.videoUrl}
                       target="_blank"
-                      className="flex items-center justify-center gap-3 w-full py-5 bg-amber-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-xl group"
+                      className="flex items-center justify-center gap-3 w-full py-5 bg-amber-600 text-white rounded-2xl font-bold hover:bg-amber-700 transition-all shadow-xl group"
                     >
                       Watch on YouTube 
                       <ExternalLink size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
