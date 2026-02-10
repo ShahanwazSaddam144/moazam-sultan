@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, Calculator, BookOpen, User, Mail } from "lucide-react";
+import { Menu, X, Calculator, BookOpen, User, Mail, User2 } from "lucide-react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -36,12 +36,12 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-8 text-white">
             <NavItem href="/services" icon={<Calculator size={18} />} label="Services" />
             <NavItem href="/resources" icon={<BookOpen size={18} />} label="Resources" />
-            <NavItem href="/about" icon={<User size={18} />} label="About" />
+             <NavItem href="#portfolio" icon={<User2 size={18} />} label="Portfolio" />
             <NavItem href="/contact" icon={<Mail size={18} />} label="Contact" />
           </div>
 
               <Link
-              href="/book"
+              href="#bookSession"
               className="hidden md:flex ml-4 rounded-lg bg-white text-amber-600 font-semibold px-4 py-2 shadow hover:bg-amber-50 transition"
             >
               Book a Session
@@ -65,7 +65,7 @@ const Navbar = () => {
             <MobileNavItem href="/about" icon={<User size={18} />} label="About" />
             <MobileNavItem href="/contact" icon={<Mail size={18} />} label="Contact" />
             <Link
-              href="/book"
+              href="#bookSession"
               className="block mt-2 w-full text-center rounded-lg bg-amber-600 text-white font-semibold px-4 py-2 shadow hover:bg-amber-700 transition"
             >
               Book a Session

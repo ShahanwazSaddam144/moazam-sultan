@@ -62,7 +62,7 @@ const BookSession = () => {
 
   return (
     <>
-      <section className="bg-gradient-to-b from-orange-100 to-amber-50 py-20">
+      <section className="bg-gradient-to-b from-orange-100 to-amber-50 py-20" id="bookSession">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold text-amber-800">

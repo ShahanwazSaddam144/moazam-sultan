@@ -21,6 +21,19 @@ const Hero = () => {
               exams. Learn concepts clearly, solve faster, and score higher.
             </p>
 
+            {/* Bottom Info */}
+            <div className="mt-5 flex flex-wrap gap-4 justify-center md:justify-start text-gray-600">
+              <div className="bg-amber-100 border-2 border-amber-600 px-4 py-2 rounded-lg font-medium text-sm">
+                O/A Level
+              </div>
+              <div className="bg-amber-100 border-2 border-amber-600 px-4 py-2 rounded-lg font-medium text-sm">
+                A Level
+              </div>
+              <div className="bg-amber-100 border-2 border-amber-600 px-4 py-2 rounded-lg font-medium text-sm">
+                Calculus
+              </div>
+              </div>
+
             <div className="mt-6 flex flex-col mb-5 sm:flex-row gap-4 justify-center md:justify-start">
               <button className="rounded-xl cursor-pointer bg-amber-600 px-6 py-3 text-white font-semibold shadow-md hover:bg-amber-700 transition">
                 Book a Session

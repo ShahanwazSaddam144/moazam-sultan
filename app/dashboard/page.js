@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Eye, EyeOff } from "lucide-react";
+import { X, Eye, EyeOff, Mail, User, Calendar, Clock } from "lucide-react";
 import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
@@ -55,7 +55,7 @@ const Dashboard = () => {
             <div className="absolute -top-20 -right-20 w-60 h-60 bg-amber-300 rounded-full opacity-40 animate-pulse"></div>
             <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-orange-300 rounded-full opacity-30 animate-pulse"></div>
 
-            <h2 className="text-4xl font-extrabold text-amber-800 text-center mb-2">Client Login</h2>
+            <h2 className="text-4xl font-extrabold text-amber-800 text-center mb-2">Login</h2>
             <p className="text-gray-600 text-center mb-8">Enter credentials to access booked sessions</p>
 
             <div className="space-y-5">
@@ -91,8 +91,13 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="w-full max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl font-extrabold text-amber-800 mb-10 text-center">Booked Sessions</h2>
+            {/* Header */}
+            <div className="mb-10 text-center">
+              <h2 className="text-4xl font-extrabold text-amber-800 mb-2">Booked Sessions</h2>
+              <div className="mx-auto w-24 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full"></div>
+            </div>
 
+            {/* Session Content */}
             {loadingSessions ? (
               <p className="text-center text-gray-600 text-lg">Loading sessions...</p>
             ) : errorSessions ? (
@@ -100,17 +105,38 @@ const Dashboard = () => {
             ) : sessions.length === 0 ? (
               <p className="text-center text-gray-600 text-lg">No sessions booked yet.</p>
             ) : (
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {sessions.map((s) => (
                   <div
                     key={s._id}
-                    className="rounded-3xl bg-white p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 hover:scale-105"
+                    className="relative rounded-3xl bg-white shadow-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300"
                   >
-                    <h3 className="text-xl font-bold text-amber-800 mb-3">{s.name}</h3>
-                    <p className="text-gray-700"><strong>Email:</strong> {s.email}</p>
-                    <p className="text-gray-700"><strong>Grade:</strong> {s.grade}</p>
-                    <p className="text-gray-700"><strong>Day:</strong> {s.day}</p>
-                    <p className="text-gray-700"><strong>Time:</strong> {s.time}</p>
+                    {/* Gradient accent bar */}
+                    <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-400 to-orange-400"></div>
+
+                    <div className="p-6 pt-4 flex flex-col gap-3">
+                      <h3 className="text-2xl font-bold text-amber-800 mb-2">{s.name}</h3>
+
+                      <div className="flex items-center gap-2 text-gray-700">
+                        <Mail className="w-5 h-5 text-amber-600" />
+                        <span className="font-medium">Email:</span> {s.email}
+                      </div>
+
+                      <div className="flex items-center gap-2 text-gray-700">
+                        <User className="w-5 h-5 text-amber-600" />
+                        <span className="font-medium">Grade:</span> {s.grade}
+                      </div>
+
+                      <div className="flex items-center gap-2 text-gray-700">
+                        <Calendar className="w-5 h-5 text-amber-600" />
+                        <span className="font-medium">Day:</span> {s.day}
+                      </div>
+
+                      <div className="flex items-center gap-2 text-gray-700">
+                        <Clock className="w-5 h-5 text-amber-600" />
+                        <span className="font-medium">Time:</span> {s.time}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -118,6 +144,7 @@ const Dashboard = () => {
           </div>
         )}
 
+        {/* Popup */}
         {popup.show && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
             <div className="relative w-full max-w-sm rounded-2xl bg-white p-6 text-center shadow-xl">

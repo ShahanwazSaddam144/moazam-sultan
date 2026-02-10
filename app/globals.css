@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+::selection{
+    background-color: orange;
+}
+
+html{
+    scroll-behavior: smooth;
+}
