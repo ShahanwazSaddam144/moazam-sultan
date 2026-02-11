@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -28,7 +29,7 @@ const Hero = () => {
                 O/A Level
               </div>
               <div className="bg-amber-100 border-2 border-amber-600 px-4 py-2 rounded-lg font-medium text-sm">
-                A Level
+               Punjab Board
               </div>
               <div className="bg-amber-100 border-2 border-amber-600 px-4 py-2 rounded-lg font-medium text-sm">
                 Calculus
@@ -36,12 +37,16 @@ const Hero = () => {
               </div>
 
             <div className="mt-6 flex flex-col mb-5 sm:flex-row gap-4 justify-center md:justify-start">
+              <Link href={"#bookSession"}>
               <button className="rounded-xl cursor-pointer bg-amber-600 px-6 py-3 text-white font-semibold shadow-md hover:bg-amber-700 transition">
                 Book a Session
               </button>
+              </Link>
+              <Link href={"#services"}>
               <button className="rounded-xl border-2 cursor-pointer border-amber-600 px-6 py-3 text-amber-700 font-semibold hover:bg-amber-100 transition">
-                View Resources
+                View Services
               </button>
+              </Link>
             </div>
           </div>
 
